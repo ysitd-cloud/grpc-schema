@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.judge";
+option java_outer_classname = "JudgeProto";
+
+package judge;
+
+service Judge {
+  rpc validatePolicy(AccessRequest) returns (AccessReply) {}
+}
+
+message AccessRequest {
+  string subject = 1;
+  string action = 2;
+  string resource = 3;
+  string token = 4;
+}
+
+message AccessReply {
+  bool allow = 1;
+  string reason = 2;
+}
