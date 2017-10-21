@@ -8,6 +8,7 @@ package judge;
 
 import "judge/subject.proto";
 import "judge/judge.proto";
+import "judge/resource.proto";
 
 service Judge {
     // Subject CURD
@@ -15,6 +16,12 @@ service Judge {
     rpc deleteSubject(SubjectSelector) returns (SubjectMutationReply) {}
     rpc updateSubject(UpdateSubjectRequest) returns (SubjectMutationReply) {}
     rpc getSubject(SubjectSelector) returns (Subject) {}
+
+    // Resource CURD
+    rpc getResource(ResourceSelector) returns (Resource) {}
+    rpc deleteResource(ResourceSelector) returns (ResourceMutationReply) {}
+    rpc updateResource(UpdateResourceRequest) returns (ResourceMutationReply) {}
+    rpc createResource(Resource) returns (ResourceMutationReply) {}
 
     // Judge Service
     rpc validatePolicy(AccessRequest) returns (AccessReply) {}

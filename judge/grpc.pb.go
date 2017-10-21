@@ -16,6 +16,7 @@ import fmt "fmt"
 import math "math"
 import judge1 "judge"
 import judge2 "judge"
+import judge3 "judge"
 
 import (
 	context "golang.org/x/net/context"
@@ -49,6 +50,11 @@ type JudgeClient interface {
 	DeleteSubject(ctx context.Context, in *judge1.SubjectSelector, opts ...grpc.CallOption) (*judge1.SubjectMutationReply, error)
 	UpdateSubject(ctx context.Context, in *judge1.UpdateSubjectRequest, opts ...grpc.CallOption) (*judge1.SubjectMutationReply, error)
 	GetSubject(ctx context.Context, in *judge1.SubjectSelector, opts ...grpc.CallOption) (*judge1.Subject, error)
+	// Resource CURD
+	GetResource(ctx context.Context, in *judge3.ResourceSelector, opts ...grpc.CallOption) (*judge3.Resource, error)
+	DeleteResource(ctx context.Context, in *judge3.ResourceSelector, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error)
+	UpdateResource(ctx context.Context, in *judge3.UpdateResourceRequest, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error)
+	CreateResource(ctx context.Context, in *judge3.Resource, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error)
 	// Judge Service
 	ValidatePolicy(ctx context.Context, in *judge2.AccessRequest, opts ...grpc.CallOption) (*judge2.AccessReply, error)
 }
@@ -97,6 +103,42 @@ func (c *judgeClient) GetSubject(ctx context.Context, in *judge1.SubjectSelector
 	return out, nil
 }
 
+func (c *judgeClient) GetResource(ctx context.Context, in *judge3.ResourceSelector, opts ...grpc.CallOption) (*judge3.Resource, error) {
+	out := new(judge3.Resource)
+	err := grpc.Invoke(ctx, "/judge.Judge/getResource", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *judgeClient) DeleteResource(ctx context.Context, in *judge3.ResourceSelector, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error) {
+	out := new(judge3.ResourceMutationReply)
+	err := grpc.Invoke(ctx, "/judge.Judge/deleteResource", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *judgeClient) UpdateResource(ctx context.Context, in *judge3.UpdateResourceRequest, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error) {
+	out := new(judge3.ResourceMutationReply)
+	err := grpc.Invoke(ctx, "/judge.Judge/updateResource", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *judgeClient) CreateResource(ctx context.Context, in *judge3.Resource, opts ...grpc.CallOption) (*judge3.ResourceMutationReply, error) {
+	out := new(judge3.ResourceMutationReply)
+	err := grpc.Invoke(ctx, "/judge.Judge/createResource", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *judgeClient) ValidatePolicy(ctx context.Context, in *judge2.AccessRequest, opts ...grpc.CallOption) (*judge2.AccessReply, error) {
 	out := new(judge2.AccessReply)
 	err := grpc.Invoke(ctx, "/judge.Judge/validatePolicy", in, out, c.cc, opts...)
@@ -114,6 +156,11 @@ type JudgeServer interface {
 	DeleteSubject(context.Context, *judge1.SubjectSelector) (*judge1.SubjectMutationReply, error)
 	UpdateSubject(context.Context, *judge1.UpdateSubjectRequest) (*judge1.SubjectMutationReply, error)
 	GetSubject(context.Context, *judge1.SubjectSelector) (*judge1.Subject, error)
+	// Resource CURD
+	GetResource(context.Context, *judge3.ResourceSelector) (*judge3.Resource, error)
+	DeleteResource(context.Context, *judge3.ResourceSelector) (*judge3.ResourceMutationReply, error)
+	UpdateResource(context.Context, *judge3.UpdateResourceRequest) (*judge3.ResourceMutationReply, error)
+	CreateResource(context.Context, *judge3.Resource) (*judge3.ResourceMutationReply, error)
 	// Judge Service
 	ValidatePolicy(context.Context, *judge2.AccessRequest) (*judge2.AccessReply, error)
 }
@@ -194,6 +241,78 @@ func _Judge_GetSubject_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Judge_GetResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(judge3.ResourceSelector)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(JudgeServer).GetResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/judge.Judge/GetResource",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JudgeServer).GetResource(ctx, req.(*judge3.ResourceSelector))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Judge_DeleteResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(judge3.ResourceSelector)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(JudgeServer).DeleteResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/judge.Judge/DeleteResource",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JudgeServer).DeleteResource(ctx, req.(*judge3.ResourceSelector))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Judge_UpdateResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(judge3.UpdateResourceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(JudgeServer).UpdateResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/judge.Judge/UpdateResource",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JudgeServer).UpdateResource(ctx, req.(*judge3.UpdateResourceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Judge_CreateResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(judge3.Resource)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(JudgeServer).CreateResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/judge.Judge/CreateResource",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(JudgeServer).CreateResource(ctx, req.(*judge3.Resource))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Judge_ValidatePolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(judge2.AccessRequest)
 	if err := dec(in); err != nil {
@@ -233,6 +352,22 @@ var _Judge_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Judge_GetSubject_Handler,
 		},
 		{
+			MethodName: "getResource",
+			Handler:    _Judge_GetResource_Handler,
+		},
+		{
+			MethodName: "deleteResource",
+			Handler:    _Judge_DeleteResource_Handler,
+		},
+		{
+			MethodName: "updateResource",
+			Handler:    _Judge_UpdateResource_Handler,
+		},
+		{
+			MethodName: "createResource",
+			Handler:    _Judge_CreateResource_Handler,
+		},
+		{
 			MethodName: "validatePolicy",
 			Handler:    _Judge_ValidatePolicy_Handler,
 		},
@@ -244,20 +379,25 @@ var _Judge_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("judge/grpc.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 240 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc8, 0x2a, 0x4d, 0x49,
-	0x4f, 0xd5, 0x4f, 0x2f, 0x2a, 0x48, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x8b,
-	0x48, 0x09, 0x43, 0x24, 0x8a, 0x4b, 0x93, 0xb2, 0x52, 0x93, 0x4b, 0x20, 0x72, 0x52, 0x82, 0x10,
-	0x41, 0x30, 0x09, 0x11, 0x32, 0xba, 0xc4, 0xc4, 0xc5, 0xea, 0x05, 0xe2, 0x0b, 0xd9, 0x71, 0xf1,
-	0x26, 0x17, 0xa5, 0x26, 0x96, 0xa4, 0x06, 0x43, 0xf4, 0x08, 0xf1, 0xe9, 0x41, 0x14, 0x42, 0xf9,
-	0x52, 0xd2, 0xa8, 0x7c, 0xdf, 0xd2, 0x92, 0xc4, 0x92, 0xcc, 0xfc, 0xbc, 0xa0, 0xd4, 0x82, 0x9c,
-	0x4a, 0x25, 0x06, 0x21, 0x37, 0x2e, 0xde, 0x94, 0xd4, 0x9c, 0x54, 0x84, 0x7e, 0x31, 0x54, 0xf5,
-	0xc1, 0xa9, 0x39, 0xa9, 0xc9, 0x25, 0xf9, 0x45, 0x84, 0xcc, 0xf1, 0xe6, 0xe2, 0x2d, 0x2d, 0x48,
-	0x41, 0x72, 0x07, 0x4c, 0x7d, 0x28, 0xb2, 0x68, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x31, 0x41, 0x47,
-	0x99, 0x71, 0x71, 0xa5, 0xa7, 0x96, 0x10, 0x72, 0x11, 0x9a, 0x4f, 0x95, 0x18, 0x84, 0x6c, 0xb8,
-	0xf8, 0xca, 0x12, 0x73, 0x32, 0x41, 0x16, 0x06, 0xe4, 0xe7, 0x64, 0x26, 0x57, 0x0a, 0x89, 0x40,
-	0xd5, 0x38, 0x26, 0x27, 0xa7, 0x16, 0x17, 0xc3, 0xac, 0x17, 0x42, 0x13, 0x05, 0xdb, 0xea, 0xa4,
-	0xc6, 0x25, 0x96, 0x9c, 0x93, 0x5f, 0x9a, 0xa2, 0x57, 0x59, 0x9c, 0x59, 0x92, 0xa2, 0x07, 0x8e,
-	0x1d, 0xb0, 0x3a, 0x27, 0x2e, 0x70, 0x58, 0x07, 0x80, 0x82, 0x3e, 0x80, 0x31, 0x89, 0x0d, 0x1c,
-	0x07, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xca, 0x2d, 0xde, 0x52, 0xc6, 0x01, 0x00, 0x00,
+	// 307 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0x4f, 0x4b, 0xfb, 0x40,
+	0x14, 0xec, 0x0f, 0x7e, 0xf5, 0xf0, 0x24, 0x51, 0xd7, 0x52, 0x21, 0xf6, 0x94, 0x83, 0xc7, 0x08,
+	0x0a, 0x82, 0x20, 0x42, 0x7b, 0x10, 0x54, 0x94, 0x90, 0xe2, 0x07, 0x48, 0x37, 0x8f, 0x90, 0xb2,
+	0xb8, 0x71, 0xff, 0x08, 0xf9, 0xcc, 0x7e, 0x09, 0xc9, 0xee, 0x26, 0x36, 0x7b, 0xd9, 0x4b, 0xe0,
+	0xcd, 0xbc, 0x99, 0x4c, 0x26, 0x0f, 0x4e, 0xf7, 0xba, 0xaa, 0xf1, 0xba, 0x16, 0x2d, 0xcd, 0x5a,
+	0xc1, 0x15, 0x27, 0x73, 0x83, 0x24, 0xe7, 0x96, 0x90, 0x7a, 0xb7, 0x47, 0xaa, 0x2c, 0x97, 0x9c,
+	0x59, 0xd0, 0x3c, 0x1d, 0xb4, 0xb0, 0x90, 0x40, 0xc9, 0xb5, 0xa0, 0x0e, 0xbd, 0xf9, 0xf9, 0x0f,
+	0xf3, 0x97, 0x9e, 0x20, 0x8f, 0x10, 0x51, 0x81, 0xa5, 0xc2, 0xad, 0x75, 0x22, 0x71, 0x66, 0xe5,
+	0x6e, 0x4e, 0x2e, 0xa7, 0xf3, 0x9b, 0x56, 0xa5, 0x6a, 0xf8, 0x67, 0x81, 0x2d, 0xeb, 0xd2, 0x19,
+	0x79, 0x82, 0xa8, 0x42, 0x86, 0x7f, 0xfa, 0xe5, 0x74, 0x7f, 0x8b, 0x0c, 0xa9, 0xe2, 0x22, 0xe4,
+	0xf3, 0x0a, 0x91, 0x6e, 0xab, 0x83, 0x1c, 0xc3, 0xfe, 0xc7, 0x21, 0x5a, 0xe0, 0x97, 0x46, 0x19,
+	0x0c, 0x75, 0x07, 0x50, 0xa3, 0x0a, 0x25, 0xf2, 0xbe, 0x34, 0x9d, 0x91, 0x7b, 0x38, 0xae, 0x51,
+	0x15, 0xae, 0x2b, 0x72, 0xe1, 0x16, 0x06, 0x60, 0x54, 0x9e, 0x78, 0x44, 0x3a, 0x23, 0xcf, 0x10,
+	0xdb, 0x1e, 0xc2, 0xea, 0x95, 0x47, 0xf8, 0xe9, 0xdf, 0x21, 0xb6, 0x55, 0x8c, 0x56, 0xab, 0x49,
+	0x17, 0x03, 0x3c, 0x94, 0x11, 0xf2, 0x5b, 0x43, 0x6c, 0x7f, 0xf1, 0xe8, 0xe7, 0xe7, 0x0f, 0x5a,
+	0x3c, 0x40, 0xfc, 0x5d, 0xb2, 0xa6, 0x7f, 0x7b, 0xce, 0x59, 0x43, 0x3b, 0xb2, 0x70, 0x8a, 0x35,
+	0xa5, 0x28, 0xe5, 0x10, 0x85, 0x78, 0xa8, 0x51, 0x6f, 0xae, 0x60, 0x49, 0x19, 0xd7, 0x55, 0xd6,
+	0xc9, 0x46, 0x55, 0x99, 0x39, 0x66, 0xb3, 0xb7, 0x01, 0x73, 0x84, 0x79, 0x7f, 0x93, 0xf9, 0xbf,
+	0xdd, 0x91, 0x39, 0xce, 0xdb, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x6a, 0xd9, 0x0d, 0xd8, 0xf5,
+	0x02, 0x00, 0x00,
 }

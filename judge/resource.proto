@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.judge";
+
+package judge;
+
+message Resource {
+    string id = 1;
+    string description = 2;
+    string owner = 3;
+}
+
+message ResourceSelector {
+    string id = 1;
+}
+
+message ResourceMutationReply {
+    bool error = 1;
+    bool message = 2;
+}
+
+message UpdateResourceRequest {
+    ResourceSelector selector = 1;
+    Resource content = 2;
+}
