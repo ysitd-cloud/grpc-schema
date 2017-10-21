@@ -2,16 +2,8 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "cloud.ysitd.grpc.judge";
-option java_outer_classname = "SubjectProto";
 
 package judge;
-
-service SubjectManage {
-    rpc createSubject(Subject) returns (SubjectMutationReply) {}
-    rpc deleteSubject(SubjectSelector) returns (SubjectMutationReply) {}
-    rpc updateSubject(UpdateSubjectRequest) returns (SubjectMutationReply) {}
-    rpc getSubject(SubjectSelector) returns (Subject) {}
-}
 
 enum SubjectType {
     APP = 0;
