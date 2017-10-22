@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "cloud.ysitd.grpc.judge";
+option go_package = "github.com/ysitd-cloud/grpc-schema/judge;judge";
 
 package judge;
 

@@ -8,7 +8,7 @@ all: $(TARGET_FILE)
 .PHONY: all %.pb.go clean
 
 %.pb.go: %.proto
-	protoc -I . $< --go_out=plugins=grpc:.
+	protoc -I $(GOPATH)/src/github.com/ysitd-cloud/grpc-schema $< --go_out=plugins=grpc:$(GOPATH)/src
 
 clean:
 	rm $(TARGET_FILE)
