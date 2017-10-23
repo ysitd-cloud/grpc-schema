@@ -27,7 +27,7 @@ message UpdateSubjectRequest {
 
 message SubjectMutationReply {
     bool error = 1;
-    bool message = 2;
+    string message = 2;
 }
 
 
@@ -43,7 +43,7 @@ message ResourceSelector {
 
 message ResourceMutationReply {
     bool error = 1;
-    bool message = 2;
+    string message = 2;
 }
 
 message UpdateResourceRequest {
