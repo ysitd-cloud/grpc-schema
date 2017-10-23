@@ -1,5 +1,5 @@
 DIR := judge
-SOURCE_FILE := $(wildcard $(DIR)/*.proto)
+SOURCE_FILE := $(wildcard $(DIR)/*.proto $(DIR)/**/*.proto)
 TARGET_FILE := $(SOURCE_FILE:.proto=.pb.go)
 
 all: $(TARGET_FILE)

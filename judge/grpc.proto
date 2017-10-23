@@ -3,13 +3,12 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "cloud.ysitd.grpc.judge";
 option java_outer_classname = "JudgeProto";
-option go_package = "github.com/ysitd-cloud/grpc-schema/judge;judge";
+option go_package = "github.com/ysitd-cloud/grpc-schema/judge";
 
 package judge;
 
-import "judge/subject.proto";
-import "judge/judge.proto";
-import "judge/resource.proto";
+import "judge/models/types.proto";
+import "judge/actions/judge.proto";
 
 service Judge {
     // Subject CURD
