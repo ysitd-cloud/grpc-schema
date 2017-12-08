@@ -14,7 +14,7 @@ package session
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import session3 "github.com/ysitd-cloud/grpc-schema/session/actions"
+import session2 "github.com/ysitd-cloud/grpc-schema/session/actions"
 
 import (
 	context "golang.org/x/net/context"
@@ -43,10 +43,10 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for Session service
 
 type SessionClient interface {
-	CreateSession(ctx context.Context, in *session3.CreateSessoinRequest, opts ...grpc.CallOption) (*session3.CreateSessionReply, error)
-	GetSession(ctx context.Context, in *session3.GetSessionRequest, opts ...grpc.CallOption) (*session3.GetSessionReply, error)
-	UpdateSession(ctx context.Context, in *session3.UpdateSessionRequest, opts ...grpc.CallOption) (*session3.UpdateSessionReply, error)
-	DeleteSession(ctx context.Context, in *session3.DeleteSessionRequest, opts ...grpc.CallOption) (*session3.DeleteSessionReply, error)
+	CreateSession(ctx context.Context, in *session2.CreateSessoinRequest, opts ...grpc.CallOption) (*session2.CreateSessionReply, error)
+	GetSession(ctx context.Context, in *session2.GetSessionRequest, opts ...grpc.CallOption) (*session2.GetSessionReply, error)
+	UpdateSession(ctx context.Context, in *session2.UpdateSessionRequest, opts ...grpc.CallOption) (*session2.UpdateSessionReply, error)
+	DeleteSession(ctx context.Context, in *session2.DeleteSessionRequest, opts ...grpc.CallOption) (*session2.DeleteSessionReply, error)
 }
 
 type sessionClient struct {
@@ -57,8 +57,8 @@ func NewSessionClient(cc *grpc.ClientConn) SessionClient {
 	return &sessionClient{cc}
 }
 
-func (c *sessionClient) CreateSession(ctx context.Context, in *session3.CreateSessoinRequest, opts ...grpc.CallOption) (*session3.CreateSessionReply, error) {
-	out := new(session3.CreateSessionReply)
+func (c *sessionClient) CreateSession(ctx context.Context, in *session2.CreateSessoinRequest, opts ...grpc.CallOption) (*session2.CreateSessionReply, error) {
+	out := new(session2.CreateSessionReply)
 	err := grpc.Invoke(ctx, "/session.Session/createSession", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -66,8 +66,8 @@ func (c *sessionClient) CreateSession(ctx context.Context, in *session3.CreateSe
 	return out, nil
 }
 
-func (c *sessionClient) GetSession(ctx context.Context, in *session3.GetSessionRequest, opts ...grpc.CallOption) (*session3.GetSessionReply, error) {
-	out := new(session3.GetSessionReply)
+func (c *sessionClient) GetSession(ctx context.Context, in *session2.GetSessionRequest, opts ...grpc.CallOption) (*session2.GetSessionReply, error) {
+	out := new(session2.GetSessionReply)
 	err := grpc.Invoke(ctx, "/session.Session/getSession", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -75,8 +75,8 @@ func (c *sessionClient) GetSession(ctx context.Context, in *session3.GetSessionR
 	return out, nil
 }
 
-func (c *sessionClient) UpdateSession(ctx context.Context, in *session3.UpdateSessionRequest, opts ...grpc.CallOption) (*session3.UpdateSessionReply, error) {
-	out := new(session3.UpdateSessionReply)
+func (c *sessionClient) UpdateSession(ctx context.Context, in *session2.UpdateSessionRequest, opts ...grpc.CallOption) (*session2.UpdateSessionReply, error) {
+	out := new(session2.UpdateSessionReply)
 	err := grpc.Invoke(ctx, "/session.Session/updateSession", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -84,8 +84,8 @@ func (c *sessionClient) UpdateSession(ctx context.Context, in *session3.UpdateSe
 	return out, nil
 }
 
-func (c *sessionClient) DeleteSession(ctx context.Context, in *session3.DeleteSessionRequest, opts ...grpc.CallOption) (*session3.DeleteSessionReply, error) {
-	out := new(session3.DeleteSessionReply)
+func (c *sessionClient) DeleteSession(ctx context.Context, in *session2.DeleteSessionRequest, opts ...grpc.CallOption) (*session2.DeleteSessionReply, error) {
+	out := new(session2.DeleteSessionReply)
 	err := grpc.Invoke(ctx, "/session.Session/deleteSession", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -96,10 +96,10 @@ func (c *sessionClient) DeleteSession(ctx context.Context, in *session3.DeleteSe
 // Server API for Session service
 
 type SessionServer interface {
-	CreateSession(context.Context, *session3.CreateSessoinRequest) (*session3.CreateSessionReply, error)
-	GetSession(context.Context, *session3.GetSessionRequest) (*session3.GetSessionReply, error)
-	UpdateSession(context.Context, *session3.UpdateSessionRequest) (*session3.UpdateSessionReply, error)
-	DeleteSession(context.Context, *session3.DeleteSessionRequest) (*session3.DeleteSessionReply, error)
+	CreateSession(context.Context, *session2.CreateSessoinRequest) (*session2.CreateSessionReply, error)
+	GetSession(context.Context, *session2.GetSessionRequest) (*session2.GetSessionReply, error)
+	UpdateSession(context.Context, *session2.UpdateSessionRequest) (*session2.UpdateSessionReply, error)
+	DeleteSession(context.Context, *session2.DeleteSessionRequest) (*session2.DeleteSessionReply, error)
 }
 
 func RegisterSessionServer(s *grpc.Server, srv SessionServer) {
@@ -107,7 +107,7 @@ func RegisterSessionServer(s *grpc.Server, srv SessionServer) {
 }
 
 func _Session_CreateSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(session3.CreateSessoinRequest)
+	in := new(session2.CreateSessoinRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -119,13 +119,13 @@ func _Session_CreateSession_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/session.Session/CreateSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServer).CreateSession(ctx, req.(*session3.CreateSessoinRequest))
+		return srv.(SessionServer).CreateSession(ctx, req.(*session2.CreateSessoinRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Session_GetSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(session3.GetSessionRequest)
+	in := new(session2.GetSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -137,13 +137,13 @@ func _Session_GetSession_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/session.Session/GetSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServer).GetSession(ctx, req.(*session3.GetSessionRequest))
+		return srv.(SessionServer).GetSession(ctx, req.(*session2.GetSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Session_UpdateSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(session3.UpdateSessionRequest)
+	in := new(session2.UpdateSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -155,13 +155,13 @@ func _Session_UpdateSession_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/session.Session/UpdateSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServer).UpdateSession(ctx, req.(*session3.UpdateSessionRequest))
+		return srv.(SessionServer).UpdateSession(ctx, req.(*session2.UpdateSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Session_DeleteSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(session3.DeleteSessionRequest)
+	in := new(session2.DeleteSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -173,7 +173,7 @@ func _Session_DeleteSession_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/session.Session/DeleteSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionServer).DeleteSession(ctx, req.(*session3.DeleteSessionRequest))
+		return srv.(SessionServer).DeleteSession(ctx, req.(*session2.DeleteSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

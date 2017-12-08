@@ -13,17 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-from session.models import service_pb2 as session_dot_models_dot_service__pb2
-from session.models import session_pb2 as session_dot_models_dot_session__pb2
+from session.models import types_pb2 as session_dot_models_dot_types__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='session/actions/access.proto',
   package='session',
   syntax='proto3',
-  serialized_pb=_b('\n\x1csession/actions/access.proto\x12\x07session\x1a\x1csession/models/service.proto\x1a\x1csession/models/session.proto\"c\n\x14\x43reateSessoinRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12(\n\x07session\x18\x02 \x01(\x0b\x32\x17.session.SessionContent\" \n\x12\x43reateSessionReply\x12\n\n\x02id\x18\x01 \x01(\t\"B\n\x11GetSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\"K\n\x0fGetSessionReply\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x12(\n\x07session\x18\x02 \x01(\x0b\x32\x17.session.SessionContent\"o\n\x14UpdateSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\x12(\n\x07\x63ontent\x18\x03 \x01(\x0b\x32\x17.session.SessionContent\"%\n\x12UpdateSessionReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"E\n\x14\x44\x65leteSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\"%\n\x12\x44\x65leteSessionReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\x42P\n\x18\x63loud.ysitd.grpc.sessionP\x01Z2github.com/ysitd-cloud/grpc-schema/session/actionsb\x06proto3')
+  serialized_pb=_b('\n\x1csession/actions/access.proto\x12\x07session\x1a\x1asession/models/types.proto\"c\n\x14\x43reateSessoinRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12(\n\x07session\x18\x02 \x01(\x0b\x32\x17.session.SessionContent\" \n\x12\x43reateSessionReply\x12\n\n\x02id\x18\x01 \x01(\t\"B\n\x11GetSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\"K\n\x0fGetSessionReply\x12\x0e\n\x06\x65xists\x18\x01 \x01(\x08\x12(\n\x07session\x18\x02 \x01(\x0b\x32\x17.session.SessionContent\"o\n\x14UpdateSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\x12(\n\x07\x63ontent\x18\x03 \x01(\x0b\x32\x17.session.SessionContent\"%\n\x12UpdateSessionReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\"E\n\x14\x44\x65leteSessionRequest\x12!\n\x07service\x18\x01 \x01(\x0b\x32\x10.session.Service\x12\n\n\x02id\x18\x02 \x01(\t\"%\n\x12\x44\x65leteSessionReply\x12\x0f\n\x07success\x18\x01 \x01(\x08\x42P\n\x18\x63loud.ysitd.grpc.sessionP\x01Z2github.com/ysitd-cloud/grpc-schema/session/actionsb\x06proto3')
   ,
-  dependencies=[session_dot_models_dot_service__pb2.DESCRIPTOR,session_dot_models_dot_session__pb2.DESCRIPTOR,])
+  dependencies=[session_dot_models_dot_types__pb2.DESCRIPTOR,])
 
 
 
@@ -61,8 +60,8 @@ _CREATESESSOINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=101,
-  serialized_end=200,
+  serialized_start=69,
+  serialized_end=168,
 )
 
 
@@ -92,8 +91,8 @@ _CREATESESSIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=202,
-  serialized_end=234,
+  serialized_start=170,
+  serialized_end=202,
 )
 
 
@@ -130,8 +129,8 @@ _GETSESSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=236,
-  serialized_end=302,
+  serialized_start=204,
+  serialized_end=270,
 )
 
 
@@ -168,8 +167,8 @@ _GETSESSIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=304,
-  serialized_end=379,
+  serialized_start=272,
+  serialized_end=347,
 )
 
 
@@ -213,8 +212,8 @@ _UPDATESESSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=381,
-  serialized_end=492,
+  serialized_start=349,
+  serialized_end=460,
 )
 
 
@@ -244,8 +243,8 @@ _UPDATESESSIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=494,
-  serialized_end=531,
+  serialized_start=462,
+  serialized_end=499,
 )
 
 
@@ -282,8 +281,8 @@ _DELETESESSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=533,
-  serialized_end=602,
+  serialized_start=501,
+  serialized_end=570,
 )
 
 
@@ -313,17 +312,17 @@ _DELETESESSIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=604,
-  serialized_end=641,
+  serialized_start=572,
+  serialized_end=609,
 )
 
-_CREATESESSOINREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_service__pb2._SERVICE
-_CREATESESSOINREQUEST.fields_by_name['session'].message_type = session_dot_models_dot_session__pb2._SESSIONCONTENT
-_GETSESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_service__pb2._SERVICE
-_GETSESSIONREPLY.fields_by_name['session'].message_type = session_dot_models_dot_session__pb2._SESSIONCONTENT
-_UPDATESESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_service__pb2._SERVICE
-_UPDATESESSIONREQUEST.fields_by_name['content'].message_type = session_dot_models_dot_session__pb2._SESSIONCONTENT
-_DELETESESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_service__pb2._SERVICE
+_CREATESESSOINREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_types__pb2._SERVICE
+_CREATESESSOINREQUEST.fields_by_name['session'].message_type = session_dot_models_dot_types__pb2._SESSIONCONTENT
+_GETSESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_types__pb2._SERVICE
+_GETSESSIONREPLY.fields_by_name['session'].message_type = session_dot_models_dot_types__pb2._SESSIONCONTENT
+_UPDATESESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_types__pb2._SERVICE
+_UPDATESESSIONREQUEST.fields_by_name['content'].message_type = session_dot_models_dot_types__pb2._SESSIONCONTENT
+_DELETESESSIONREQUEST.fields_by_name['service'].message_type = session_dot_models_dot_types__pb2._SERVICE
 DESCRIPTOR.message_types_by_name['CreateSessoinRequest'] = _CREATESESSOINREQUEST
 DESCRIPTOR.message_types_by_name['CreateSessionReply'] = _CREATESESSIONREPLY
 DESCRIPTOR.message_types_by_name['GetSessionRequest'] = _GETSESSIONREQUEST

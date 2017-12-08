@@ -3,8 +3,7 @@
 
 require 'google/protobuf'
 
-require 'session/models/service_pb'
-require 'session/models/session_pb'
+require 'session/models/types_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "session.CreateSessoinRequest" do
     optional :service, :message, 1, "session.Service"

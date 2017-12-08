@@ -6,8 +6,7 @@ option go_package = "github.com/ysitd-cloud/grpc-schema/session/actions";
 
 package session;
 
-import "session/models/service.proto";
-import "session/models/session.proto";
+import "session/models/types.proto";
 
 message CreateSessoinRequest {
     Service service = 1;

@@ -11,8 +11,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var session_models_service_pb = require('../../session/models/service_pb.js');
-var session_models_session_pb = require('../../session/models/session_pb.js');
+var session_models_types_pb = require('../../session/models/types_pb.js');
 goog.exportSymbol('proto.session.CreateSessionReply', null, global);
 goog.exportSymbol('proto.session.CreateSessoinRequest', null, global);
 goog.exportSymbol('proto.session.DeleteSessionReply', null, global);
@@ -68,8 +67,8 @@ proto.session.CreateSessoinRequest.prototype.toObject = function(opt_includeInst
  */
 proto.session.CreateSessoinRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    service: (f = msg.getService()) && session_models_service_pb.Service.toObject(includeInstance, f),
-    session: (f = msg.getSession()) && session_models_session_pb.SessionContent.toObject(includeInstance, f)
+    service: (f = msg.getService()) && session_models_types_pb.Service.toObject(includeInstance, f),
+    session: (f = msg.getSession()) && session_models_types_pb.SessionContent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -107,13 +106,13 @@ proto.session.CreateSessoinRequest.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new session_models_service_pb.Service;
-      reader.readMessage(value,session_models_service_pb.Service.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.Service;
+      reader.readMessage(value,session_models_types_pb.Service.deserializeBinaryFromReader);
       msg.setService(value);
       break;
     case 2:
-      var value = new session_models_session_pb.SessionContent;
-      reader.readMessage(value,session_models_session_pb.SessionContent.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.SessionContent;
+      reader.readMessage(value,session_models_types_pb.SessionContent.deserializeBinaryFromReader);
       msg.setSession(value);
       break;
     default:
@@ -150,7 +149,7 @@ proto.session.CreateSessoinRequest.serializeBinaryToWriter = function(message, w
     writer.writeMessage(
       1,
       f,
-      session_models_service_pb.Service.serializeBinaryToWriter
+      session_models_types_pb.Service.serializeBinaryToWriter
     );
   }
   f = message.getSession();
@@ -158,7 +157,7 @@ proto.session.CreateSessoinRequest.serializeBinaryToWriter = function(message, w
     writer.writeMessage(
       2,
       f,
-      session_models_session_pb.SessionContent.serializeBinaryToWriter
+      session_models_types_pb.SessionContent.serializeBinaryToWriter
     );
   }
 };
@@ -170,7 +169,7 @@ proto.session.CreateSessoinRequest.serializeBinaryToWriter = function(message, w
  */
 proto.session.CreateSessoinRequest.prototype.getService = function() {
   return /** @type{?proto.session.Service} */ (
-    jspb.Message.getWrapperField(this, session_models_service_pb.Service, 1));
+    jspb.Message.getWrapperField(this, session_models_types_pb.Service, 1));
 };
 
 
@@ -200,7 +199,7 @@ proto.session.CreateSessoinRequest.prototype.hasService = function() {
  */
 proto.session.CreateSessoinRequest.prototype.getSession = function() {
   return /** @type{?proto.session.SessionContent} */ (
-    jspb.Message.getWrapperField(this, session_models_session_pb.SessionContent, 2));
+    jspb.Message.getWrapperField(this, session_models_types_pb.SessionContent, 2));
 };
 
 
@@ -413,7 +412,7 @@ proto.session.GetSessionRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.session.GetSessionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    service: (f = msg.getService()) && session_models_service_pb.Service.toObject(includeInstance, f),
+    service: (f = msg.getService()) && session_models_types_pb.Service.toObject(includeInstance, f),
     id: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -452,8 +451,8 @@ proto.session.GetSessionRequest.deserializeBinaryFromReader = function(msg, read
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new session_models_service_pb.Service;
-      reader.readMessage(value,session_models_service_pb.Service.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.Service;
+      reader.readMessage(value,session_models_types_pb.Service.deserializeBinaryFromReader);
       msg.setService(value);
       break;
     case 2:
@@ -494,7 +493,7 @@ proto.session.GetSessionRequest.serializeBinaryToWriter = function(message, writ
     writer.writeMessage(
       1,
       f,
-      session_models_service_pb.Service.serializeBinaryToWriter
+      session_models_types_pb.Service.serializeBinaryToWriter
     );
   }
   f = message.getId();
@@ -513,7 +512,7 @@ proto.session.GetSessionRequest.serializeBinaryToWriter = function(message, writ
  */
 proto.session.GetSessionRequest.prototype.getService = function() {
   return /** @type{?proto.session.Service} */ (
-    jspb.Message.getWrapperField(this, session_models_service_pb.Service, 1));
+    jspb.Message.getWrapperField(this, session_models_types_pb.Service, 1));
 };
 
 
@@ -600,7 +599,7 @@ proto.session.GetSessionReply.prototype.toObject = function(opt_includeInstance)
 proto.session.GetSessionReply.toObject = function(includeInstance, msg) {
   var f, obj = {
     exists: jspb.Message.getFieldWithDefault(msg, 1, false),
-    session: (f = msg.getSession()) && session_models_session_pb.SessionContent.toObject(includeInstance, f)
+    session: (f = msg.getSession()) && session_models_types_pb.SessionContent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -642,8 +641,8 @@ proto.session.GetSessionReply.deserializeBinaryFromReader = function(msg, reader
       msg.setExists(value);
       break;
     case 2:
-      var value = new session_models_session_pb.SessionContent;
-      reader.readMessage(value,session_models_session_pb.SessionContent.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.SessionContent;
+      reader.readMessage(value,session_models_types_pb.SessionContent.deserializeBinaryFromReader);
       msg.setSession(value);
       break;
     default:
@@ -687,7 +686,7 @@ proto.session.GetSessionReply.serializeBinaryToWriter = function(message, writer
     writer.writeMessage(
       2,
       f,
-      session_models_session_pb.SessionContent.serializeBinaryToWriter
+      session_models_types_pb.SessionContent.serializeBinaryToWriter
     );
   }
 };
@@ -716,7 +715,7 @@ proto.session.GetSessionReply.prototype.setExists = function(value) {
  */
 proto.session.GetSessionReply.prototype.getSession = function() {
   return /** @type{?proto.session.SessionContent} */ (
-    jspb.Message.getWrapperField(this, session_models_session_pb.SessionContent, 2));
+    jspb.Message.getWrapperField(this, session_models_types_pb.SessionContent, 2));
 };
 
 
@@ -787,9 +786,9 @@ proto.session.UpdateSessionRequest.prototype.toObject = function(opt_includeInst
  */
 proto.session.UpdateSessionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    service: (f = msg.getService()) && session_models_service_pb.Service.toObject(includeInstance, f),
+    service: (f = msg.getService()) && session_models_types_pb.Service.toObject(includeInstance, f),
     id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    content: (f = msg.getContent()) && session_models_session_pb.SessionContent.toObject(includeInstance, f)
+    content: (f = msg.getContent()) && session_models_types_pb.SessionContent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -827,8 +826,8 @@ proto.session.UpdateSessionRequest.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new session_models_service_pb.Service;
-      reader.readMessage(value,session_models_service_pb.Service.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.Service;
+      reader.readMessage(value,session_models_types_pb.Service.deserializeBinaryFromReader);
       msg.setService(value);
       break;
     case 2:
@@ -836,8 +835,8 @@ proto.session.UpdateSessionRequest.deserializeBinaryFromReader = function(msg, r
       msg.setId(value);
       break;
     case 3:
-      var value = new session_models_session_pb.SessionContent;
-      reader.readMessage(value,session_models_session_pb.SessionContent.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.SessionContent;
+      reader.readMessage(value,session_models_types_pb.SessionContent.deserializeBinaryFromReader);
       msg.setContent(value);
       break;
     default:
@@ -874,7 +873,7 @@ proto.session.UpdateSessionRequest.serializeBinaryToWriter = function(message, w
     writer.writeMessage(
       1,
       f,
-      session_models_service_pb.Service.serializeBinaryToWriter
+      session_models_types_pb.Service.serializeBinaryToWriter
     );
   }
   f = message.getId();
@@ -889,7 +888,7 @@ proto.session.UpdateSessionRequest.serializeBinaryToWriter = function(message, w
     writer.writeMessage(
       3,
       f,
-      session_models_session_pb.SessionContent.serializeBinaryToWriter
+      session_models_types_pb.SessionContent.serializeBinaryToWriter
     );
   }
 };
@@ -901,7 +900,7 @@ proto.session.UpdateSessionRequest.serializeBinaryToWriter = function(message, w
  */
 proto.session.UpdateSessionRequest.prototype.getService = function() {
   return /** @type{?proto.session.Service} */ (
-    jspb.Message.getWrapperField(this, session_models_service_pb.Service, 1));
+    jspb.Message.getWrapperField(this, session_models_types_pb.Service, 1));
 };
 
 
@@ -946,7 +945,7 @@ proto.session.UpdateSessionRequest.prototype.setId = function(value) {
  */
 proto.session.UpdateSessionRequest.prototype.getContent = function() {
   return /** @type{?proto.session.SessionContent} */ (
-    jspb.Message.getWrapperField(this, session_models_session_pb.SessionContent, 3));
+    jspb.Message.getWrapperField(this, session_models_types_pb.SessionContent, 3));
 };
 
 
@@ -1161,7 +1160,7 @@ proto.session.DeleteSessionRequest.prototype.toObject = function(opt_includeInst
  */
 proto.session.DeleteSessionRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    service: (f = msg.getService()) && session_models_service_pb.Service.toObject(includeInstance, f),
+    service: (f = msg.getService()) && session_models_types_pb.Service.toObject(includeInstance, f),
     id: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -1200,8 +1199,8 @@ proto.session.DeleteSessionRequest.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new session_models_service_pb.Service;
-      reader.readMessage(value,session_models_service_pb.Service.deserializeBinaryFromReader);
+      var value = new session_models_types_pb.Service;
+      reader.readMessage(value,session_models_types_pb.Service.deserializeBinaryFromReader);
       msg.setService(value);
       break;
     case 2:
@@ -1242,7 +1241,7 @@ proto.session.DeleteSessionRequest.serializeBinaryToWriter = function(message, w
     writer.writeMessage(
       1,
       f,
-      session_models_service_pb.Service.serializeBinaryToWriter
+      session_models_types_pb.Service.serializeBinaryToWriter
     );
   }
   f = message.getId();
@@ -1261,7 +1260,7 @@ proto.session.DeleteSessionRequest.serializeBinaryToWriter = function(message, w
  */
 proto.session.DeleteSessionRequest.prototype.getService = function() {
   return /** @type{?proto.session.Service} */ (
-    jspb.Message.getWrapperField(this, session_models_service_pb.Service, 1));
+    jspb.Message.getWrapperField(this, session_models_types_pb.Service, 1));
 };
 
 
