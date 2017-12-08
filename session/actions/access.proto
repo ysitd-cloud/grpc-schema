@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.session";
+option go_package = "github.com/ysitd-cloud/grpc-schema/session/actions";
+
+package session;
+
+import "session/models/service.proto";
+import "session/models/session.proto";
+
+message CreateSessoinRequest {
+    Service service = 1;
+    SessionContent session = 2;
+}
+
+message CreateSessionReply {
+    string id = 1;
+}
+
+message GetSessionRequest {
+    Service service = 1;
+    string id = 2;
+}
+
+message GetSessionReply {
+    bool exists = 1;
+    SessionContent session = 2;
+}
+
+message UpdateSessionRequest {
+    Service service = 1;
+    string id = 2;
+    SessionContent content = 3;
+}
+
+message UpdateSessionReply {
+    bool success = 1;
+}
+
+message DeleteSessionRequest {
+    Service service = 1;
+    string id = 2;
+}
+
+message DeleteSessionReply {
+    bool success = 1;
+}
