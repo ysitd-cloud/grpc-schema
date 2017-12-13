@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.account";
+option go_package = "github.com/ysitd-cloud/grpc-schema/account/actions";
+
+package account;
+
+import "account/models/types.proto";
+
+message ValidateUserRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message ValidateUserReply {
+    bool valid = 1;
+    User user = 2;
+}

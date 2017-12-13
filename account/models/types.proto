@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.account";
+option go_package = "github.com/ysitd-cloud/grpc-schema/account/models";
+
+package account;
+
+message User {
+    string username = 1;
+    string display_name = 2;
+    string email = 3;
+    string avatar_url = 4;
+}
