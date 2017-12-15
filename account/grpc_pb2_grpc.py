@@ -19,6 +19,16 @@ class AccountStub(object):
         request_serializer=account_dot_actions_dot_account__pb2.ValidateUserRequest.SerializeToString,
         response_deserializer=account_dot_actions_dot_account__pb2.ValidateUserReply.FromString,
         )
+    self.getUserInfo = channel.unary_unary(
+        '/account.Account/getUserInfo',
+        request_serializer=account_dot_actions_dot_account__pb2.GetUserInfoRequest.SerializeToString,
+        response_deserializer=account_dot_actions_dot_account__pb2.GetUserInfoReply.FromString,
+        )
+    self.getTokenInfo = channel.unary_unary(
+        '/account.Account/getTokenInfo',
+        request_serializer=account_dot_actions_dot_account__pb2.GetTokenInfoRequest.SerializeToString,
+        response_deserializer=account_dot_actions_dot_account__pb2.GetTokenInfoReply.FromString,
+        )
 
 
 class AccountServicer(object):
@@ -32,6 +42,20 @@ class AccountServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def getUserInfo(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def getTokenInfo(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_AccountServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +63,16 @@ def add_AccountServicer_to_server(servicer, server):
           servicer.validateUserPassword,
           request_deserializer=account_dot_actions_dot_account__pb2.ValidateUserRequest.FromString,
           response_serializer=account_dot_actions_dot_account__pb2.ValidateUserReply.SerializeToString,
+      ),
+      'getUserInfo': grpc.unary_unary_rpc_method_handler(
+          servicer.getUserInfo,
+          request_deserializer=account_dot_actions_dot_account__pb2.GetUserInfoRequest.FromString,
+          response_serializer=account_dot_actions_dot_account__pb2.GetUserInfoReply.SerializeToString,
+      ),
+      'getTokenInfo': grpc.unary_unary_rpc_method_handler(
+          servicer.getTokenInfo,
+          request_deserializer=account_dot_actions_dot_account__pb2.GetTokenInfoRequest.FromString,
+          response_serializer=account_dot_actions_dot_account__pb2.GetTokenInfoReply.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

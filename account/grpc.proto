@@ -11,4 +11,6 @@ import "account/actions/account.proto";
 
 service Account {
     rpc validateUserPassword(ValidateUserRequest) returns (ValidateUserReply) {}
+    rpc getUserInfo(GetUserInfoRequest) returns (GetUserInfoReply) {}
+    rpc getTokenInfo(GetTokenInfoRequest) returns (GetTokenInfoReply) {}
 }

@@ -6,9 +6,22 @@ option go_package = "github.com/ysitd-cloud/grpc-schema/account/models";
 
 package account;
 
+import "google/protobuf/timestamp.proto";
+
 message User {
     string username = 1;
     string display_name = 2;
     string email = 3;
     string avatar_url = 4;
+}
+
+message Service {
+    string id = 1;
+}
+
+message Token {
+    User issuer = 1;
+    Service audience = 2;
+    google.protobuf.Timestamp expire = 3;
+    repeated string scopes = 4;
 }

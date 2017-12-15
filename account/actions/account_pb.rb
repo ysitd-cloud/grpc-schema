@@ -13,9 +13,27 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :valid, :bool, 1
     optional :user, :message, 2, "account.User"
   end
+  add_message "account.GetUserInfoRequest" do
+    optional :username, :string, 1
+  end
+  add_message "account.GetUserInfoReply" do
+    optional :exists, :bool, 1
+    optional :user, :message, 2, "account.User"
+  end
+  add_message "account.GetTokenInfoRequest" do
+    optional :token, :string, 1
+  end
+  add_message "account.GetTokenInfoReply" do
+    optional :exists, :bool, 1
+    optional :token, :message, 2, "account.Token"
+  end
 end
 
 module Account
   ValidateUserRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.ValidateUserRequest").msgclass
   ValidateUserReply = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.ValidateUserReply").msgclass
+  GetUserInfoRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.GetUserInfoRequest").msgclass
+  GetUserInfoReply = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.GetUserInfoReply").msgclass
+  GetTokenInfoRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.GetTokenInfoRequest").msgclass
+  GetTokenInfoReply = Google::Protobuf::DescriptorPool.generated_pool.lookup("account.GetTokenInfoReply").msgclass
 end

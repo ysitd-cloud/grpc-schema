@@ -17,3 +17,21 @@ message ValidateUserReply {
     bool valid = 1;
     User user = 2;
 }
+
+message GetUserInfoRequest {
+    string username = 1;
+}
+
+message GetUserInfoReply {
+    bool exists = 1;
+    User user = 2;
+}
+
+message GetTokenInfoRequest {
+    string token = 1;
+}
+
+message GetTokenInfoReply {
+    bool exists = 1;
+    Token token = 2;
+}

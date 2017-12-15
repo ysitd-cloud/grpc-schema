@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='account/grpc.proto',
   package='account',
   syntax='proto3',
-  serialized_pb=_b('\n\x12\x61\x63\x63ount/grpc.proto\x12\x07\x61\x63\x63ount\x1a\x1d\x61\x63\x63ount/actions/account.proto2]\n\x07\x41\x63\x63ount\x12R\n\x14validateUserPassword\x12\x1c.account.ValidateUserRequest\x1a\x1a.account.ValidateUserReply\"\x00\x42V\n\x18\x63loud.ysitd.grpc.accountB\x0c\x41\x63\x63ountProtoP\x01Z*github.com/ysitd-cloud/grpc-schema/accountb\x06proto3')
+  serialized_pb=_b('\n\x12\x61\x63\x63ount/grpc.proto\x12\x07\x61\x63\x63ount\x1a\x1d\x61\x63\x63ount/actions/account.proto2\xf2\x01\n\x07\x41\x63\x63ount\x12R\n\x14validateUserPassword\x12\x1c.account.ValidateUserRequest\x1a\x1a.account.ValidateUserReply\"\x00\x12G\n\x0bgetUserInfo\x12\x1b.account.GetUserInfoRequest\x1a\x19.account.GetUserInfoReply\"\x00\x12J\n\x0cgetTokenInfo\x12\x1c.account.GetTokenInfoRequest\x1a\x1a.account.GetTokenInfoReply\"\x00\x42V\n\x18\x63loud.ysitd.grpc.accountB\x0c\x41\x63\x63ountProtoP\x01Z*github.com/ysitd-cloud/grpc-schema/accountb\x06proto3')
   ,
   dependencies=[account_dot_actions_dot_account__pb2.DESCRIPTOR,])
 
@@ -38,8 +38,8 @@ _ACCOUNT = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=62,
-  serialized_end=155,
+  serialized_start=63,
+  serialized_end=305,
   methods=[
   _descriptor.MethodDescriptor(
     name='validateUserPassword',
@@ -48,6 +48,24 @@ _ACCOUNT = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=account_dot_actions_dot_account__pb2._VALIDATEUSERREQUEST,
     output_type=account_dot_actions_dot_account__pb2._VALIDATEUSERREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getUserInfo',
+    full_name='account.Account.getUserInfo',
+    index=1,
+    containing_service=None,
+    input_type=account_dot_actions_dot_account__pb2._GETUSERINFOREQUEST,
+    output_type=account_dot_actions_dot_account__pb2._GETUSERINFOREPLY,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getTokenInfo',
+    full_name='account.Account.getTokenInfo',
+    index=2,
+    containing_service=None,
+    input_type=account_dot_actions_dot_account__pb2._GETTOKENINFOREQUEST,
+    output_type=account_dot_actions_dot_account__pb2._GETTOKENINFOREPLY,
     options=None,
   ),
 ])

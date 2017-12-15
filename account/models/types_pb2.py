@@ -13,14 +13,16 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='account/models/types.proto',
   package='account',
   syntax='proto3',
-  serialized_pb=_b('\n\x1a\x61\x63\x63ount/models/types.proto\x12\x07\x61\x63\x63ount\"Q\n\x04User\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x12\n\navatar_url\x18\x04 \x01(\tBO\n\x18\x63loud.ysitd.grpc.accountP\x01Z1github.com/ysitd-cloud/grpc-schema/account/modelsb\x06proto3')
-)
+  serialized_pb=_b('\n\x1a\x61\x63\x63ount/models/types.proto\x12\x07\x61\x63\x63ount\x1a\x1fgoogle/protobuf/timestamp.proto\"Q\n\x04User\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x12\n\navatar_url\x18\x04 \x01(\t\"\x15\n\x07Service\x12\n\n\x02id\x18\x01 \x01(\t\"\x86\x01\n\x05Token\x12\x1d\n\x06issuer\x18\x01 \x01(\x0b\x32\r.account.User\x12\"\n\x08\x61udience\x18\x02 \x01(\x0b\x32\x10.account.Service\x12*\n\x06\x65xpire\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0e\n\x06scopes\x18\x04 \x03(\tBO\n\x18\x63loud.ysitd.grpc.accountP\x01Z1github.com/ysitd-cloud/grpc-schema/account/modelsb\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
@@ -72,11 +74,99 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39,
-  serialized_end=120,
+  serialized_start=72,
+  serialized_end=153,
 )
 
+
+_SERVICE = _descriptor.Descriptor(
+  name='Service',
+  full_name='account.Service',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='account.Service.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=155,
+  serialized_end=176,
+)
+
+
+_TOKEN = _descriptor.Descriptor(
+  name='Token',
+  full_name='account.Token',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='issuer', full_name='account.Token.issuer', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='audience', full_name='account.Token.audience', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='expire', full_name='account.Token.expire', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='scopes', full_name='account.Token.scopes', index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=179,
+  serialized_end=313,
+)
+
+_TOKEN.fields_by_name['issuer'].message_type = _USER
+_TOKEN.fields_by_name['audience'].message_type = _SERVICE
+_TOKEN.fields_by_name['expire'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 DESCRIPTOR.message_types_by_name['User'] = _USER
+DESCRIPTOR.message_types_by_name['Service'] = _SERVICE
+DESCRIPTOR.message_types_by_name['Token'] = _TOKEN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dict(
@@ -85,6 +175,20 @@ User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dic
   # @@protoc_insertion_point(class_scope:account.User)
   ))
 _sym_db.RegisterMessage(User)
+
+Service = _reflection.GeneratedProtocolMessageType('Service', (_message.Message,), dict(
+  DESCRIPTOR = _SERVICE,
+  __module__ = 'account.models.types_pb2'
+  # @@protoc_insertion_point(class_scope:account.Service)
+  ))
+_sym_db.RegisterMessage(Service)
+
+Token = _reflection.GeneratedProtocolMessageType('Token', (_message.Message,), dict(
+  DESCRIPTOR = _TOKEN,
+  __module__ = 'account.models.types_pb2'
+  # @@protoc_insertion_point(class_scope:account.Token)
+  ))
+_sym_db.RegisterMessage(Token)
 
 
 DESCRIPTOR.has_options = True

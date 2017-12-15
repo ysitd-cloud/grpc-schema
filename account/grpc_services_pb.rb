@@ -15,6 +15,8 @@ module Account
       self.service_name = 'account.Account'
 
       rpc :validateUserPassword, ValidateUserRequest, ValidateUserReply
+      rpc :getUserInfo, GetUserInfoRequest, GetUserInfoReply
+      rpc :getTokenInfo, GetTokenInfoRequest, GetTokenInfoReply
     end
 
     Stub = Service.rpc_stub_class
