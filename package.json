@@ -1,5 +1,5 @@
 {
-  "name": "@ycloud/interfaces",
+  "name": "ysitd-cloud-interfaces",
   "version": "1.0.0",
   "repository": "git@github.com:ysitd-cloud/grpc-schema.git",
   "author": "Tony Yip <tony@opensource.hk>",
