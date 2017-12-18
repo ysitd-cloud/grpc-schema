@@ -1,0 +1,19 @@
+{
+  "name": "@ycloud/interfaces",
+  "version": "1.0.0",
+  "repository": "git@github.com:ysitd-cloud/grpc-schema.git",
+  "author": "Tony Yip <tony@opensource.hk>",
+  "license": "MIT",
+  "scripts": {
+    "generate": "make js",
+    "generate:file": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin`",
+    "clean": "make clean"
+  },
+  "peerDependencies": {
+    "google-protobuf": "^3.5.0",
+    "grpc": "^1.8.0"
+  },
+  "devDependencies": {
+    "grpc-tools": "^1.6.6"
+  }
+}

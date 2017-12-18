@@ -1,4 +1,4 @@
-SOURCE_FILE := $(shell find . -type f -name '*.proto')
+SOURCE_FILE := $(shell find . -path ./node_modules -prune -o -type f -name '*.proto')
 GO_TARGET_FILE := $(SOURCE_FILE:.proto=.pb.go)
 NODE_TARGET_FILE := $(SOURCE_FILE:.proto=_pb.js)
 PYTHON_TARGET_FILE := $(SOURCE_FILE:.proto=_pb2.py)
@@ -13,7 +13,7 @@ js: $(NODE_TARGET_FILE)
 	@echo Finish build for all js modules
 
 %_pb.js: %.proto
-	grpc_tools_node_protoc --js_out=import_style=commonjs,binary:. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` $<
+	yarn generate:file $<
 
 go: $(GO_TARGET_FILE)
 	@echo Finish build for all go modules
@@ -34,7 +34,7 @@ ruby: $(RUBY_TARGET_FILE)
 	protoc -I . --ruby_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` $<
 
 clean:
-	rm -f $(GO_TARGET_FILE)
+	rm -f $(shell find . -type f -name '*.go')
 	rm -f $(shell find . -type f -name '*.js')
 	rm -f $(shell find . -type f -name '*.rb')
 	rm -f $(shell find . -type f -name '*.py')
