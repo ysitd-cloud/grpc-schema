@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.account";
+option go_package = "github.com/ysitd-cloud/grpc-schema/deployer/models";
+
+package deployer;
+
+message Application {
+    string id = 1;
+    string owner = 2;
+    string name = 3;
+    Deployment deployment = 4;
+    Network network = 5;
+    repeated EnvironmentPair environment = 6;
+}
+
+message Deployment {
+    string image = 1;
+    string tag = 2;
+}
+
+message EnvironmentPair {
+    string key = 1;
+    string value = 2;
+}
+
+message Network {
+    string domain = 1;
+}

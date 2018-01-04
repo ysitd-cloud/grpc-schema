@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cloud.ysitd.grpc.account";
+option go_package = "github.com/ysitd-cloud/grpc-schema/deployer/actions";
+
+package deployer;
+
+import "deployer/models/types.proto";
+
+message ListApplicationsByUsernameRequest {
+    string username = 1;
+}
+
+message ListApplicationsByUsernameReply {
+    repeated Application apps = 1;
+}
+
+message CreateApplicationRequest {
+    Application app = 1;
+}
+
+message CreateApplicationReply {
+    bool success = 1;
+}
+
+message UpdateDeploymentImageRequest {
+    string id = 1;
+    Deployment deployment = 2;
+}
+
+message UpdateDeploymentImageReply {
+    bool success = 1;
+}
