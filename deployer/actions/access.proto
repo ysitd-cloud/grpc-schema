@@ -32,3 +32,12 @@ message UpdateDeploymentImageRequest {
 message UpdateDeploymentImageReply {
     bool success = 1;
 }
+
+message GetApplicationByIdRequest {
+    string id = 1;
+}
+
+message GetApplicationByIdResponse {
+    bool exists = 1;
+    Application app = 2;
+}
