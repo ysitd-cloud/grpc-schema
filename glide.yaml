@@ -1,4 +1,4 @@
-package: github.com/ysitd-cloud/grpc-schema
+package: code.ysitd.cloud/grpc/schema
 import:
 - package: github.com/golang/protobuf
   subpackages:
@@ -6,5 +6,6 @@ import:
 - package: golang.org/x/net
   subpackages:
   - context
+  version: 1c05540f6879653db88113bc4a2b70aec4bd491f
 - package: google.golang.org/grpc
-  version: ^1.8.1
+  version: ^1.9.1

@@ -17,7 +17,7 @@ go: $(GO_TARGET_FILE)
 	@echo Finish build for all go modules
 
 %.pb.go: %.proto
-	protoc -I $(GOPATH)/src/github.com/ysitd-cloud/grpc-schema $< --go_out=plugins=grpc:$(GOPATH)/src
+	protoc -I $(GOPATH)/src/code.ysitd.cloud/grpc/schema $< --go_out=plugins=grpc:$(GOPATH)/src
 
 clean:
 	rm -f $(shell find . -type f -name '*.go')
